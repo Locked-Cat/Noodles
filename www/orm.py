@@ -97,7 +97,6 @@ class FloatField(Field):
 
 class ModelMetaclass(type):
     def __new__(cls, name, bases, attrs):
-        print(attrs)
         if name == 'Model':
             return type.__new__(cls, name, bases, attrs)
             
