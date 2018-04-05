@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
 
-import logging
+import logging;
 import aiomysql
 import asyncio
 
@@ -216,32 +216,3 @@ class Model(dict, metaclass=ModelMetaclass):
         rows = await execute(self.__delete, args)
         if rows != 1:
             logging.warn('failed to update by primary key: affected rows: %s' % rows)
-
-
-class User(Model):
-    __table__ = 'users'
-
-    id = StringField(primary_key=True)
-    name = StringField()
-
-
-async def main(loop, database):
-    await create_connection_pool(loop, **database)
-    user = User()
-    user.id = 1
-    user.name = 'lichenxi03'
-    await user.save()
-    return user.name
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    loop = asyncio.get_event_loop()
-    database = {
-        'host': '127.0.0.1',
-        'user': 'root',
-        'password': 'root',
-        'db': 'noodles'
-    }
-
-    loop.run_until_complete(main(loop, database))
