@@ -27,5 +27,6 @@ class Blog(Model):
     __table__ = 'blogs'
 
     id = StringField(primary_key=True, default=next_id, ddl='var char(50)')
+    title = StringField(ddl='varchar(50)')
     user_id = StringField(ddl='varchar(50)')
     created_at = FloatField(default=time.time)

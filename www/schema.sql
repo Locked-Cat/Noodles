@@ -16,6 +16,7 @@ CREATE TABLE users (
 
 CREATE TABLE blogs (
     `id` VARCHAR(50) NOT NULL,
+    `title` VARCHAR(50) NOT NULL,
     `user_id` VARCHAR(50) NOT NULL,
     `created_at` REAL NOT NULL,
     key `idx_created_at` (`created_at`),
